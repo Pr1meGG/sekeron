@@ -1,0 +1,12 @@
+# Sekeron Scoring Configuration (Placeholder for Phase 2)
+weights:
+  capability_match: 0.60
+  provenance_confidence: 0.40
+
+penalties:
+  stock_media: 0.85
+  mismatched_profile_id: 0.15
+  mismatched_profile_name: 0.15
+  typo_folder_name: 0.05
+  silent_portfolio_video: 0.10
+  location_mismatch: 0.20

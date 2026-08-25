@@ -1,0 +1,1054 @@
+{
+  "artists": [
+    {
+      "artist_key": "artist_profiles/musicians/M01_Meera_Arjun",
+      "capabilities": [
+        {
+          "capability": "acoustic_music",
+          "status": "DEMONSTRATED",
+          "confidence": "MEDIUM",
+          "evidence": [
+            "MA_cafe_demo_take1.wav",
+            "MA_upbeat_medley_rehearsal.wav"
+          ],
+          "claims": [
+            "vocalist and Guitarist",
+            "Meera & Arjun is an acoustic duo based in Delhi NCR."
+          ],
+          "limitations": [
+            "NAME_MISMATCH",
+            "SYNTHETIC_SAMPLE"
+          ]
+        },
+        {
+          "capability": "electronic_music",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "NAME_MISMATCH",
+            "SYNTHETIC_SAMPLE"
+          ]
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/musicians/M02_Neon_Junction",
+      "capabilities": [
+        {
+          "capability": "acoustic_music",
+          "status": "CLAIMED_ONLY",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [
+            "Electronic Live Act & Vocals"
+          ],
+          "limitations": [
+            "LIMITED_BY_PROVENANCE"
+          ]
+        },
+        {
+          "capability": "electronic_music",
+          "status": "CLAIMED_ONLY",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [
+            "Electronic Live Act & Vocals",
+            "Neon Junction is a 3-piece live electronic act based in Delhi NCR."
+          ],
+          "limitations": [
+            "LIMITED_BY_PROVENANCE"
+          ]
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/musicians/M03_Raghav_Sen",
+      "capabilities": [
+        {
+          "capability": "acoustic_music",
+          "status": "CLAIMED_ONLY",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [
+            "Vocalist &  Guitarist",
+            "Raghav Sen is a solo singer and acoustic guitarist based in Noida."
+          ],
+          "limitations": [
+            "LIMITED_BY_PROVENANCE"
+          ]
+        },
+        {
+          "capability": "electronic_music",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "LIMITED_BY_PROVENANCE"
+          ]
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/musicians/M04_KillRush",
+      "capabilities": [
+        {
+          "capability": "acoustic_music",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Vocals & Guitars",
+            "Kill Rush is a live acoustic band based in Noida / Delhi NCR"
+          ],
+          "limitations": []
+        },
+        {
+          "capability": "electronic_music",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/musicians/M05_Lunar_Noise",
+      "capabilities": [
+        {
+          "capability": "acoustic_music",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Vocalist and guitarist"
+          ],
+          "limitations": [
+            "NAME_MISMATCH"
+          ]
+        },
+        {
+          "capability": "electronic_music",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "NAME_MISMATCH"
+          ]
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/photographers/P01_Aanya_Rao",
+      "capabilities": [
+        {
+          "capability": "architecture_photography",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "event_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer",
+            "Photographer working in events, caf\u00e9s, workshops, team days and small business photography.",
+            "events"
+          ],
+          "limitations": []
+        },
+        {
+          "capability": "nature_photography",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "portrait_photography",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "product_photography",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "travel_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Travel available"
+          ],
+          "limitations": []
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/photographers/P02_Kabir_Mehta",
+      "capabilities": [
+        {
+          "capability": "architecture_photography",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "event_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer"
+          ],
+          "limitations": []
+        },
+        {
+          "capability": "fashion_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer working in product, food, fashion and portrait photography.",
+            "fashion"
+          ],
+          "limitations": []
+        },
+        {
+          "capability": "food_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer working in product, food, fashion and portrait photography.",
+            "food"
+          ],
+          "limitations": []
+        },
+        {
+          "capability": "nature_photography",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "portrait_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer working in product, food, fashion and portrait photography.",
+            "portrait photography"
+          ],
+          "limitations": []
+        },
+        {
+          "capability": "product_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer working in product, food, fashion and portrait photography.",
+            "product"
+          ],
+          "limitations": []
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/photographers/P03_Leena_Thomas",
+      "capabilities": [
+        {
+          "capability": "architecture_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer working in architecture, interiors, hospitality and travel photography.",
+            "architecture",
+            "interiors",
+            "hospitality"
+          ],
+          "limitations": []
+        },
+        {
+          "capability": "event_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer"
+          ],
+          "limitations": []
+        },
+        {
+          "capability": "nature_photography",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "portrait_photography",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "product_photography",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "travel_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Travel available",
+            "Photographer working in architecture, interiors, hospitality and travel photography.",
+            "travel photography"
+          ],
+          "limitations": []
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/photographers/PO4_Drift",
+      "capabilities": [
+        {
+          "capability": "architecture_photography",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "event_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer",
+            "Photographer working in portrait, event, travel and nature photography.",
+            "event"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "nature_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer working in portrait, event, travel and nature photography.",
+            "nature photography"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "portrait_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer working in portrait, event, travel and nature photography.",
+            "portrait"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "product_photography",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "travel_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer working in portrait, event, travel and nature photography.",
+            "travel"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "vertical_video_editing",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Freelance / Collaborations"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/photographers/PO5_Frames",
+      "capabilities": [
+        {
+          "capability": "architecture_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer and cinematographer working in architecture, product, fashion, portrait and event photography.",
+            "architecture"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "cinematography_production",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photography & Videography projects"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "event_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer / Cinematographer",
+            "Photographer and cinematographer working in architecture, product, fashion, portrait and event photography.",
+            "event photography"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "fashion_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer and cinematographer working in architecture, product, fashion, portrait and event photography.",
+            "fashion"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "nature_photography",
+          "status": "DEMONSTRATED",
+          "confidence": "MEDIUM",
+          "evidence": [
+            "36c2003b-aa0f-4e10-8950-facba57cd706Sunflower_20251227040241.jpeg"
+          ],
+          "claims": [],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "portrait_photography",
+          "status": "DEMONSTRATED",
+          "confidence": "MEDIUM",
+          "evidence": [
+            "875ac26c-f559-4a85-8fad-6bd4d5dae2e504_Two_Worlds_One_Smile_Monojit_Dutta-1_20251227033830.jpg"
+          ],
+          "claims": [
+            "Photographer and cinematographer working in architecture, product, fashion, portrait and event photography.",
+            "portrait"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "product_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Photographer and cinematographer working in architecture, product, fashion, portrait and event photography.",
+            "product"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/video_editors/V01_Nisha_Kapoor",
+      "capabilities": [
+        {
+          "capability": "cinematic_travel_editing",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "cinematography_production",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "corporate_explainer_editing",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "event_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Video editor creating short-form social videos, food videos, event recaps and creator content.",
+            "event recaps"
+          ],
+          "limitations": []
+        },
+        {
+          "capability": "food_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Video editor creating short-form social videos, food videos, event recaps and creator content.",
+            "food videos"
+          ],
+          "limitations": []
+        },
+        {
+          "capability": "vertical_video_editing",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Video Editor",
+            "Video editor creating short-form social videos, food videos, event recaps and creator content.",
+            "short-form social videos"
+          ],
+          "limitations": []
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/video_editors/V02_Rehman_Ali",
+      "capabilities": [
+        {
+          "capability": "cinematic_travel_editing",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "cinematography_production",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": []
+        },
+        {
+          "capability": "corporate_explainer_editing",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Video editor working on interview-led films, explainers and company videos.",
+            "interview-led films",
+            "explainers",
+            "company videos"
+          ],
+          "limitations": []
+        },
+        {
+          "capability": "vertical_video_editing",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Video Editor"
+          ],
+          "limitations": []
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/video_editors/V03_Rahul_Gupta",
+      "capabilities": [
+        {
+          "capability": "architecture_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Cinematic travel, wedding and hospitality films with music-led pacing."
+          ],
+          "limitations": [
+            "NAME_MISMATCH"
+          ]
+        },
+        {
+          "capability": "cinematic_travel_editing",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Cinematic travel, wedding and hospitality films with music-led pacing."
+          ],
+          "limitations": [
+            "NAME_MISMATCH"
+          ]
+        },
+        {
+          "capability": "cinematography_production",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "NAME_MISMATCH"
+          ]
+        },
+        {
+          "capability": "corporate_explainer_editing",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "NAME_MISMATCH"
+          ]
+        },
+        {
+          "capability": "travel_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Cinematic travel, wedding and hospitality films with music-led pacing."
+          ],
+          "limitations": [
+            "NAME_MISMATCH"
+          ]
+        },
+        {
+          "capability": "vertical_video_editing",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Video Editor"
+          ],
+          "limitations": [
+            "NAME_MISMATCH"
+          ]
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/video_editors/VO4_Shivam_media",
+      "capabilities": [
+        {
+          "capability": "cinematic_travel_editing",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "UNUSUAL_DIRECTORY_LAYOUT"
+          ]
+        },
+        {
+          "capability": "cinematography_production",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Visual artist working in portrait photography, cinematography, videography and video editing.",
+            "cinematography",
+            "videography"
+          ],
+          "limitations": [
+            "UNUSUAL_DIRECTORY_LAYOUT"
+          ]
+        },
+        {
+          "capability": "corporate_explainer_editing",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "UNUSUAL_DIRECTORY_LAYOUT"
+          ]
+        },
+        {
+          "capability": "portrait_photography",
+          "status": "CLAIMED_ONLY",
+          "confidence": "MEDIUM",
+          "evidence": [],
+          "claims": [
+            "Visual artist working in portrait photography, cinematography, videography and video editing.",
+            "portrait photography"
+          ],
+          "limitations": [
+            "UNUSUAL_DIRECTORY_LAYOUT"
+          ]
+        },
+        {
+          "capability": "vertical_video_editing",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "UNUSUAL_DIRECTORY_LAYOUT"
+          ]
+        }
+      ]
+    },
+    {
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "capabilities": [
+        {
+          "capability": "cinematic_travel_editing",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "cinematography_production",
+          "status": "DEMONSTRATED",
+          "confidence": "MEDIUM",
+          "evidence": [
+            "4320_Samsung_Event_Videography.mp4",
+            "4321_Gym_Videography.mov",
+            "4322_Music_Video.mov",
+            "4323_Cafe_videography.mov"
+          ],
+          "claims": [
+            "Video creator working across cinematography, videography, video editing, sound design and direction."
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "corporate_explainer_editing",
+          "status": "UNKNOWN",
+          "confidence": "LOW",
+          "evidence": [],
+          "claims": [],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        },
+        {
+          "capability": "vertical_video_editing",
+          "status": "DEMONSTRATED",
+          "confidence": "MEDIUM",
+          "evidence": [
+            "4331_EDITING_WORK.mp4",
+            "4332_Mini_Vlog_edit.mov"
+          ],
+          "claims": [
+            "Video Creator"
+          ],
+          "limitations": [
+            "ID_CONFLICT"
+          ]
+        }
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "asset_key": "MA_cafe_demo_take1.wav",
+      "artist_key": "artist_profiles/musicians/M01_Meera_Arjun",
+      "subject": "live acoustic vocal performance",
+      "format_style": "solo / duo performance rehearsal",
+      "audio_content": "acoustic guitar and vocals",
+      "confidence": "MEDIUM",
+      "source_locator": "MA_cafe_demo_take1.wav",
+      "source_type": "filename_context"
+    },
+    {
+      "asset_key": "MA_upbeat_medley_rehearsal.wav",
+      "artist_key": "artist_profiles/musicians/M01_Meera_Arjun",
+      "subject": "acoustic medley rehearsal",
+      "format_style": "duo / ensemble live run",
+      "audio_content": "acoustic instrumentation",
+      "confidence": "MEDIUM",
+      "source_locator": "MA_upbeat_medley_rehearsal.wav",
+      "source_type": "filename_context"
+    },
+    {
+      "asset_key": "36c2003b-aa0f-4e10-8950-facba57cd706Sunflower_20251227040241.jpeg",
+      "artist_key": "artist_profiles/photographers/PO5_Frames",
+      "subject": "sunflower flora detail",
+      "format_style": "macro nature snapshot",
+      "audio_content": "unknown",
+      "confidence": "MEDIUM",
+      "source_locator": "36c2003b-aa0f-4e10-8950-facba57cd706Sunflower_20251227040241.jpeg",
+      "source_type": "filename_context"
+    },
+    {
+      "asset_key": "875ac26c-f559-4a85-8fad-6bd4d5dae2e504_Two_Worlds_One_Smile_Monojit_Dutta-1_20251227033830.jpg",
+      "artist_key": "artist_profiles/photographers/PO5_Frames",
+      "subject": "candid human portrait",
+      "format_style": "shallow depth-of-field portrait",
+      "audio_content": "unknown",
+      "confidence": "MEDIUM",
+      "source_locator": "875ac26c-f559-4a85-8fad-6bd4d5dae2e504_Two_Worlds_One_Smile_Monojit_Dutta-1_20251227033830.jpg",
+      "source_type": "filename_context"
+    },
+    {
+      "asset_key": "4320_Samsung_Event_Videography.mp4",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "subject": "corporate event / launch event",
+      "format_style": "cinematic coverage",
+      "audio_content": "unknown",
+      "confidence": "MEDIUM",
+      "source_locator": "4320_Samsung_Event_Videography.mp4",
+      "source_type": "filename_context"
+    },
+    {
+      "asset_key": "4321_Gym_Videography.mov",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "subject": "fitness / gym workout",
+      "format_style": "high-energy promo edit",
+      "audio_content": "unknown",
+      "confidence": "MEDIUM",
+      "source_locator": "4321_Gym_Videography.mov",
+      "source_type": "filename_context"
+    },
+    {
+      "asset_key": "4322_Music_Video.mov",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "subject": "musical performance / artist track",
+      "format_style": "creative music-synced edit",
+      "audio_content": "unknown",
+      "confidence": "MEDIUM",
+      "source_locator": "4322_Music_Video.mov",
+      "source_type": "filename_context"
+    },
+    {
+      "asset_key": "4323_Cafe_videography.mov",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "subject": "caf\u00e9 interiors / food preparation",
+      "format_style": "hospitality promotional reel",
+      "audio_content": "unknown",
+      "confidence": "MEDIUM",
+      "source_locator": "4323_Cafe_videography.mov",
+      "source_type": "filename_context"
+    },
+    {
+      "asset_key": "4331_EDITING_WORK.mp4",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "subject": "general editing compilation",
+      "format_style": "portfolio edit compilation",
+      "audio_content": "unknown",
+      "confidence": "MEDIUM",
+      "source_locator": "4331_EDITING_WORK.mp4",
+      "source_type": "filename_context"
+    },
+    {
+      "asset_key": "4332_Mini_Vlog_edit.mov",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "subject": "lifestyle mini-vlog",
+      "format_style": "personal vlog edit",
+      "audio_content": "unknown",
+      "confidence": "MEDIUM",
+      "source_locator": "4332_Mini_Vlog_edit.mov",
+      "source_type": "filename_context"
+    }
+  ],
+  "evidence_quality": [
+    {
+      "issue_type": "name_mismatch",
+      "artist_key": "artist_profiles/musicians/M01_Meera_Arjun",
+      "severity": "ERROR",
+      "description": "Folder name 'Meera_Arjun' does not match Claimed name 'Meera & Arjun' in profile."
+    },
+    {
+      "issue_type": "name_mismatch",
+      "artist_key": "artist_profiles/musicians/M05_Lunar_Noise",
+      "severity": "ERROR",
+      "description": "Folder name 'Lunar_Noise' does not match Claimed name 'Abhay Sharma' in profile."
+    },
+    {
+      "issue_type": "id_conflict",
+      "artist_key": "artist_profiles/photographers/PO4_Drift",
+      "severity": "ERROR",
+      "description": "Folder ID 'PO4' does not match Claimed ID 'V05' in profile."
+    },
+    {
+      "issue_type": "extension_mismatch",
+      "artist_key": "artist_profiles/photographers/PO4_Drift",
+      "severity": "WARNING",
+      "description": "File extension '.png' does not match detected content MIME 'image/jpeg'."
+    },
+    {
+      "issue_type": "extension_mismatch",
+      "artist_key": "artist_profiles/photographers/PO4_Drift",
+      "severity": "WARNING",
+      "description": "File extension '.png' does not match detected content MIME 'image/jpeg'."
+    },
+    {
+      "issue_type": "extension_mismatch",
+      "artist_key": "artist_profiles/photographers/PO4_Drift",
+      "severity": "WARNING",
+      "description": "File extension '.png' does not match detected content MIME 'image/jpeg'."
+    },
+    {
+      "issue_type": "extension_mismatch",
+      "artist_key": "artist_profiles/photographers/PO4_Drift",
+      "severity": "WARNING",
+      "description": "File extension '.png' does not match detected content MIME 'image/jpeg'."
+    },
+    {
+      "issue_type": "id_conflict",
+      "artist_key": "artist_profiles/photographers/PO5_Frames",
+      "severity": "ERROR",
+      "description": "Folder ID 'PO5' does not match Claimed ID 'P04' in profile."
+    },
+    {
+      "issue_type": "missing_profile_name",
+      "artist_key": "artist_profiles/video_editors/V02_Rehman_Ali",
+      "severity": "WARNING",
+      "description": "The profile document is missing a name in the header."
+    },
+    {
+      "issue_type": "name_mismatch",
+      "artist_key": "artist_profiles/video_editors/V03_Rahul_Gupta",
+      "severity": "ERROR",
+      "description": "Folder name 'Rahul_Gupta' does not match Claimed name 'Tara D'Souza' in profile."
+    },
+    {
+      "issue_type": "duplicate_media",
+      "artist_key": "artist_profiles/video_editors/V03_Rahul_Gupta",
+      "severity": "WARNING",
+      "description": "Media file 'Video-32465.mp4' is a duplicate of 'Video-12136.mp4' (Artist: artist_profiles/video_editors/V03_Rahul_Gupta)."
+    },
+    {
+      "issue_type": "silent_video",
+      "artist_key": "artist_profiles/video_editors/V03_Rahul_Gupta",
+      "severity": "WARNING",
+      "description": "Video asset 'Video-73044.mp4' does not contain an audio stream."
+    },
+    {
+      "issue_type": "unusual_directory_layout",
+      "artist_key": "artist_profiles/video_editors/VO4_Shivam_media",
+      "severity": "WARNING",
+      "description": "Artist directory 'VO4_Shivam_media' has an unusual media directory layout."
+    },
+    {
+      "issue_type": "id_conflict",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "severity": "ERROR",
+      "description": "Folder ID 'VO5' does not match Claimed ID 'V03' in profile."
+    },
+    {
+      "issue_type": "extension_mismatch",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "severity": "WARNING",
+      "description": "File extension '.mov' does not match detected content MIME 'video/mp4'."
+    },
+    {
+      "issue_type": "extension_mismatch",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "severity": "WARNING",
+      "description": "File extension '.mov' does not match detected content MIME 'video/mp4'."
+    },
+    {
+      "issue_type": "extension_mismatch",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "severity": "WARNING",
+      "description": "File extension '.mov' does not match detected content MIME 'video/mp4'."
+    },
+    {
+      "issue_type": "extension_mismatch",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "severity": "WARNING",
+      "description": "File extension '.mov' does not match detected content MIME 'video/mp4'."
+    },
+    {
+      "issue_type": "duplicate_profile_id",
+      "artist_key": "artist_profiles/video_editors/V03_Rahul_Gupta",
+      "severity": "ERROR",
+      "description": "Claimed profile ID 'V03' is claimed by multiple folders."
+    },
+    {
+      "issue_type": "duplicate_profile_id",
+      "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+      "severity": "ERROR",
+      "description": "Claimed profile ID 'V03' is claimed by multiple folders."
+    }
+  ]
+}
