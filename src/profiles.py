@@ -43,7 +43,7 @@ def extract_profile_details(text: str, folder_name: str) -> Tuple[Optional[str],
         claimed_id = id_match.group(1)
         
     # 2. Display Name Extraction
-    # Case: "Artist Name -Abhay Sharma"
+    # Case: "Artist Name -Jane Doe"
     name_match = re.search(r'Artist Name\s*[-—:]\s*([A-Za-z\s\'&]+)', text, re.IGNORECASE)
     if name_match:
         claimed_name = name_match.group(1).strip()
@@ -51,7 +51,7 @@ def extract_profile_details(text: str, folder_name: str) -> Tuple[Optional[str],
         # Check first line for common header formats:
         if lines and not lines[0].startswith("Category:") and not lines[0].startswith("Location:"):
             first_line = lines[0]
-            # Case "P01 / Aanya Rao" or "M01 — Meera & Arjun" or "V03 / Tara D'Souza"
+            # Case "P01 / Jane Doe" or "M01 — John & Jane" or "V03 / Jane Smith"
             if '/' in first_line:
                 parts = first_line.split('/')
                 claimed_name = parts[1].strip()
@@ -61,10 +61,10 @@ def extract_profile_details(text: str, folder_name: str) -> Tuple[Optional[str],
             elif '-' in first_line:
                 parts = first_line.split('-')
                 claimed_name = parts[1].strip()
-            elif '(' in first_line and ')' in first_line: # Case "Raghav Sen (M03)"
+            elif '(' in first_line and ')' in first_line: # Case "Jane Doe (M03)"
                 claimed_name = re.sub(r'\([A-Za-z0-9\s]+\)', '', first_line).strip()
             elif claimed_id and claimed_id in first_line:
-                # E.g. "M04_KillRush" -> split and clean
+                # E.g. "M04_UniqueName" -> split and clean
                 cleaned = first_line.replace(claimed_id, "").replace("_", " ").strip()
                 claimed_name = cleaned
             else:
@@ -223,7 +223,7 @@ def extract_claims_and_issues(
     norm_folder_name = folder_name_core.replace('_', ' ').lower().strip()
     if claimed_name:
         norm_claimed_name = claimed_name.lower().strip()
-        # check if they are significantly different (e.g. Tara D'Souza vs Rahul Gupta)
+        # check if they are significantly different (e.g. Jane Smith vs John Doe)
         if norm_claimed_name not in norm_folder_name and norm_folder_name not in norm_claimed_name:
             issues.append(DataQualityIssue(
                 severity="ERROR",

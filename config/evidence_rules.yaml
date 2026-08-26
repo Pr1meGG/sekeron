@@ -1,0 +1,82 @@
+# Evidence rules for the Phase 2 evidence layer.
+#
+# These rules are DATASET-AGNOSTIC configuration, not code. The pipeline must
+# generalize to another dataset by editing THIS FILE only:
+#   - No artist names, artist IDs, or folder names may appear here.
+#   - Rules are ordered; the first matching rule wins.
+#   - All patterns are case-insensitive Python regular expressions.
+
+# ---------------------------------------------------------------------------
+# Stock / third-party media provenance.
+#
+# An asset is treated as stock (LIMITED_BY_PROVENANCE) if ANY rule matches.
+# Each rule matches a regular expression against one asset field:
+#   field: filename | path | artist_key
+#
+# The default rule is purely STRUCTURAL: royalty-free libraries name tracks
+# "<publisher>-<title-slug...>-<catalog-id>.<ext>" with a 5-6 digit catalog ID
+# after the final hyphen. It contains no knowledge of any specific dataset.
+stock_media_rules:
+  - field: filename
+    pattern: '^[a-z][a-z0-9_]*(?:-[a-z0-9_]+)+-\d{5,6}\.[a-z0-9]+$'
+
+# ---------------------------------------------------------------------------
+# Filename content cues (weak semantic signals).
+#
+# Each cue maps a filename regex to a content observation. Per knowledge.md:
+#   - source_type stays "filename_context"
+#   - confidence is capped at MEDIUM for ALL filename-derived observations
+# capability: normalized capability id (see CAPABILITY_MAPPING in src/evidence.py)
+# audio_content is optional and defaults to "unknown".
+content_cues:
+  - pattern: 'event_videography'
+    subject: "corporate event / launch event"
+    format_style: "cinematic coverage"
+    capability: cinematography_production
+
+  - pattern: 'gym_videography'
+    subject: "fitness / gym workout"
+    format_style: "high-energy promo edit"
+    capability: cinematography_production
+
+  - pattern: 'music_video'
+    subject: "musical performance / artist track"
+    format_style: "creative music-synced edit"
+    capability: cinematography_production
+
+  - pattern: 'cafe_videography'
+    subject: "café interiors / food preparation"
+    format_style: "hospitality promotional reel"
+    capability: cinematography_production
+
+  - pattern: 'vlog_edit'
+    subject: "lifestyle mini-vlog"
+    format_style: "personal vlog edit"
+    capability: vertical_video_editing
+
+  - pattern: 'editing_work'
+    subject: "general editing compilation"
+    format_style: "portfolio edit compilation"
+    capability: vertical_video_editing
+
+  - pattern: 'cafe_demo'
+    subject: "live acoustic vocal performance"
+    format_style: "solo / duo performance rehearsal"
+    audio_content: "acoustic guitar and vocals"
+    capability: acoustic_music
+
+  - pattern: 'medley_rehearsal'
+    subject: "acoustic medley rehearsal"
+    format_style: "duo / ensemble live run"
+    audio_content: "acoustic instrumentation"
+    capability: acoustic_music
+
+  - pattern: 'two_worlds_one_smile'
+    subject: "candid human portrait"
+    format_style: "shallow depth-of-field portrait"
+    capability: portrait_photography
+
+  - pattern: 'sunflower'
+    subject: "sunflower flora detail"
+    format_style: "macro nature snapshot"
+    capability: nature_photography

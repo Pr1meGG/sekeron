@@ -1,5 +1,29 @@
 import unittest
-from src.evidence import compile_evidence_layer, is_stock_media
+from pathlib import Path
+import tempfile
+import os
+
+import src.evidence as evidence_module
+from src.evidence import (
+    compile_evidence_layer,
+    is_stock_media,
+    detect_content_observation,
+    load_evidence_rules,
+    reset_evidence_rules,
+    EVIDENCE_RULES_PATH,
+)
+
+# Tokens that must NEVER re-enter src/evidence.py or the shipped rule config:
+# artist folder names and dataset-specific track titles (knowledge.md:
+# "Dataset-Specific Logic: FORBIDDEN").
+FORBIDDEN_DATASET_TOKENS = [
+    "M02_Neon_Junction",
+    "M03_Raghav_Sen",
+    "feel-like-home",
+    "letting-go",
+    "summer-walk",
+    "pretty-when-i-fall",
+]
 
 class TestEvidence(unittest.TestCase):
 
@@ -241,6 +265,122 @@ class TestEvidence(unittest.TestCase):
         
         ac_assessment = next(a for a in assessments if a.artist_key == "artist_profiles/musicians/M02_Neon_Junction" and a.capability == "acoustic_music")
         self.assertEqual(ac_assessment.status, "UNKNOWN")
+
+class TestNoDatasetSpecificHardcoding(unittest.TestCase):
+
+    def test_evidence_source_has_no_dataset_specific_tokens(self):
+        # The evidence decision logic must be free of artist names and
+        # dataset-specific track-title substrings.
+        source = Path(evidence_module.__file__).read_text(encoding="utf-8")
+        for token in FORBIDDEN_DATASET_TOKENS:
+            self.assertNotIn(token, source, f"dataset-specific token leaked into source: {token}")
+
+    def test_rule_config_has_no_artist_names(self):
+        # The generic mechanism may not smuggle artist identities into YAML.
+        rules_path = Path(EVIDENCE_RULES_PATH)
+        self.assertTrue(rules_path.exists(), "config/evidence_rules.yaml must ship with the pipeline")
+        text = rules_path.read_text(encoding="utf-8")
+        for token in ["M02_", "M03_", "Neon_Junction", "Raghav_Sen"]:
+            self.assertNotIn(token, text, f"artist identity leaked into rule config: {token}")
+
+
+class TestConfigDrivenStockDetection(unittest.TestCase):
+
+    def test_generic_filename_pattern_detects_stock_regardless_of_artist(self):
+        # A slug-style library track is detected for ANY artist key.
+        self.assertTrue(is_stock_media("anyone-new-track-name-523056.mp3", "artist_profiles/musicians/ZZZ_Unknown_Act"))
+
+    def test_provenance_limitation_survives_artist_rename(self):
+        # Renaming the artist must NOT change stock detection: the decision
+        # follows the filename pattern, not a hardcoded folder name.
+        harness = TestEvidence("test_stock_media_triggers_provenance_limitation_and_claimed_only")
+        harness.setUp()
+        data = harness.mock_ingestion
+        renamed = "artist_profiles/musicians/Z01_Completely_Different_Name"
+        for artist in data["artists"]:
+            if artist["artist_key"] == "artist_profiles/musicians/M02_Neon_Junction":
+                artist["artist_key"] = renamed
+                artist["category"] = "musician"
+        for media in data["media"]:
+            if media["artist_key"] == "artist_profiles/musicians/M02_Neon_Junction":
+                media["artist_key"] = renamed
+        for claim in data["profile_claims"]:
+            if claim["artist_key"] == "artist_profiles/musicians/M02_Neon_Junction":
+                claim["artist_key"] = renamed
+
+        _, _, assessments, _ = compile_evidence_layer(data)
+        elec = next(a for a in assessments if a.artist_key == renamed and a.capability == "electronic_music")
+        self.assertIn("LIMITED_BY_PROVENANCE", elec.limitations)
+        self.assertEqual(elec.status, "CLAIMED_ONLY")
+
+    def test_non_stock_filename_is_not_flagged_by_artist_name_alone(self):
+        # An ordinary filename under ANY artist key is not stock.
+        self.assertFalse(is_stock_media("MA_cafe_demo_take1.wav", "artist_profiles/musicians/M02_Neon_Junction"))
+
+
+class TestConfigurationDrivenRules(unittest.TestCase):
+
+    def setUp(self):
+        self._orig_rules_path = evidence_module.EVIDENCE_RULES_PATH
+
+    def tearDown(self):
+        evidence_module.EVIDENCE_RULES_PATH = self._orig_rules_path
+        reset_evidence_rules()
+
+    def _activate_rules_file(self, yaml_text: str) -> None:
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False, encoding="utf-8")
+        tmp.write(yaml_text)
+        tmp.close()
+        self.addCleanup(os.unlink, tmp.name)
+        evidence_module.EVIDENCE_RULES_PATH = Path(tmp.name)
+        reset_evidence_rules()
+
+    def test_custom_cue_from_config_creates_observation_without_code_changes(self):
+        # A cue defined ONLY in configuration must drive content observations.
+        self._activate_rules_file(
+            "\n".join([
+                "content_cues:",
+                "  - pattern: 'kitten_playground'",
+                "    subject: \"kitten footage\"",
+                "    format_style: \"home video\"",
+                "    capability: nature_photography",
+                "    confidence: HIGH  # must be capped at MEDIUM",
+            ])
+        )
+        asset = {
+            "asset_key": "clip1.mp4",
+            "artist_key": "artist_profiles/video_editors/V99_New_Editor",
+            "filename": "summer_kitten_playground_final.mp4",
+            "path": "/data/V99/media/clip1.mp4",
+            "metadata": {},
+        }
+        result = detect_content_observation(asset)
+        self.assertIsNotNone(result)
+        obs, capability = result
+        self.assertEqual(capability, "nature_photography")
+        self.assertEqual(obs.subject, "kitten footage")
+        self.assertEqual(obs.source_type, "filename_context")
+        # knowledge.md: filename context must NEVER produce HIGH confidence.
+        self.assertEqual(obs.confidence, "MEDIUM")
+
+    def test_custom_stock_rule_from_config_flags_assets(self):
+        self._activate_rules_file(
+            "\n".join([
+                "stock_media_rules:",
+                "  - field: filename",
+                "    pattern: '^licensed_'",
+            ])
+        )
+        self.assertTrue(is_stock_media("licensed_footage_v2.mov", "artist_profiles/video_editors/V99_New_Editor"))
+        self.assertFalse(is_stock_media("original_cut.mov", "artist_profiles/video_editors/V99_New_Editor"))
+
+    def test_default_rules_load_from_shipped_config(self):
+        rules = load_evidence_rules()
+        self.assertIn("stock_media_rules", rules)
+        self.assertIn("content_cues", rules)
+        self.assertTrue(rules["stock_media_rules"])
+        self.assertTrue(rules["content_cues"])
+
 
 if __name__ == "__main__":
     unittest.main()

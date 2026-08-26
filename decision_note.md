@@ -30,5 +30,5 @@ No arbitrary numerical confidence probabilities are used in the evidence layer. 
 * `LOW`: Stock files, missing content signals, or significant metadata limitations.
 
 ### 4. Stock & Synthetic Provenance Checks
-* **Stock Music Tracks**: Files matching stock names/hashes under `M02_Neon_Junction` and `M03_Raghav_Sen` trigger a `LIMITED_BY_PROVENANCE` limitation. They are skipped for content observations and do *not* count as demonstrated capabilities.
+* **Stock Media Tracks**: Files are flagged via dataset-agnostic, configuration-driven provenance rules (`config/evidence_rules.yaml`) — by default a structural filename pattern for royalty-free library tracks (`<publisher>-<slug...>-<catalog-id>.<ext>`). Matched files trigger a `LIMITED_BY_PROVENANCE` limitation, are skipped for content observations, and do *not* count as demonstrated capabilities. No artist folder names or track titles appear in the code.
 * **Synthetic Metadata**: Comments matching `"Synthetic assessment sample"` trigger a `SYNTHETIC_SAMPLE` limitation but do not automatically invalidate the evidence.

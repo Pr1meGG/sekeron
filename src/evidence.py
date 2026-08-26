@@ -1,8 +1,56 @@
 import os
 import re
 from pathlib import Path
+from functools import lru_cache
 from typing import Dict, Any, List, Tuple, Optional, Set
+import yaml
+
 from .models import TechnicalObservation, ContentObservation, CapabilityAssessment
+
+# Default location of the dataset-agnostic evidence rule configuration.
+EVIDENCE_RULES_PATH = Path(__file__).resolve().parent.parent / "config" / "evidence_rules.yaml"
+
+# Categorical confidence ranking used to enforce the filename-cue ceiling.
+_CONFIDENCE_RANK = {"LOW": 0, "MEDIUM": 1, "HIGH": 2}
+_FILENAME_CONTEXT_MAX_CONFIDENCE = "MEDIUM"
+
+@lru_cache(maxsize=None)
+def _load_evidence_rules_cached(rules_path: str) -> Dict[str, Any]:
+    """Load and cache evidence rules from a YAML file.
+
+    Missing or malformed files degrade gracefully to empty rule sets so the
+    evidence layer never crashes on configuration problems; it simply finds
+    no stock media and no filename cues.
+    """
+    try:
+        with open(rules_path, "r", encoding="utf-8") as f:
+            rules = yaml.safe_load(f) or {}
+    except OSError:
+        rules = {}
+    if not isinstance(rules, dict):
+        rules = {}
+    return {
+        "stock_media_rules": rules.get("stock_media_rules") or [],
+        "content_cues": rules.get("content_cues") or [],
+    }
+
+def load_evidence_rules(rules_path: Optional[Path] = None) -> Dict[str, Any]:
+    """Public accessor for evidence rules; reloads when the path changes."""
+    path = str(Path(rules_path)) if rules_path else str(EVIDENCE_RULES_PATH)
+    return _load_evidence_rules_cached(path)
+
+def reset_evidence_rules() -> None:
+    """Drop cached rules so the next access re-reads them (used by tests)."""
+    _load_evidence_rules_cached.cache_clear()
+
+def _rule_target(field: str, filename: str, artist_key: str, path: str) -> str:
+    """Return the lowercase string a rule's field refers to."""
+    targets = {
+        "filename": filename,
+        "artist_key": artist_key,
+        "path": path,
+    }
+    return str(targets.get(field, filename)).lower()
 
 # Mappings of profile claims to normalized capability names
 CAPABILITY_MAPPING = {
@@ -40,15 +88,26 @@ CAPABILITY_MAPPING = {
     "videography": "cinematography_production"
 }
 
-def is_stock_media(filename: str, artist_key: str) -> bool:
-    """Detect if media file is a stock/royalty-free track based on M02/M03 contexts or standard patterns."""
-    fname_lower = filename.lower()
-    # Check folder key for M02 and M03 (where stock media was identified)
-    if "M02_Neon_Junction" in artist_key or "M03_Raghav_Sen" in artist_key:
-        return True
-    # General stock metadata/filename checking: typical stock music filename patterns with numeric tags
-    if re.search(r'\d{5,6}', fname_lower) and any(kw in fname_lower for kw in ['feel-like-home', 'letting-go', 'summer-walk', 'pretty-when-i-fall', 'electronic']):
-        return True
+def is_stock_media(filename: str, artist_key: str = "", path: str = "") -> bool:
+    """Detect whether an asset is stock/royalty-free media.
+
+    Detection is fully configuration-driven via ``config/evidence_rules.yaml``:
+    ordered regex rules matched against asset fields (filename/path/artist_key).
+    No artist names, folder names, or dataset-specific filenames appear here.
+    """
+    for rule in load_evidence_rules().get("stock_media_rules", []):
+        if not isinstance(rule, dict):
+            continue
+        pattern = rule.get("pattern")
+        if not pattern:
+            continue
+        target = _rule_target(rule.get("field", "filename"), filename, artist_key, path)
+        try:
+            if re.search(pattern, target):
+                return True
+        except re.error:
+            # Invalid patterns must never crash the pipeline; skip the rule.
+            continue
     return False
 
 def compile_technical_observations(media_assets: List[Dict[str, Any]]) -> List[TechnicalObservation]:
@@ -72,16 +131,20 @@ def compile_technical_observations(media_assets: List[Dict[str, Any]]) -> List[T
         ))
     return obs
 
-def detect_content_observation(asset: Dict[str, Any]) -> Optional[ContentObservation]:
+def detect_content_observation(asset: Dict[str, Any]) -> Optional[Tuple[ContentObservation, str]]:
     """
     Formulate a ContentObservation strictly from trustworthy semantic signals (filenames, tags).
     Imposes a confidence ceiling of MEDIUM for filename/context cues.
+
+    Filename cues come from the configuration-driven table in
+    ``config/evidence_rules.yaml`` (ordered regex rules); this module contains
+    no dataset-specific filename substrings.
     """
     filename = asset.get("filename", "")
     artist_key = asset.get("artist_key", "")
     
     # Skip stock media as it does not demonstrate original capability
-    if is_stock_media(filename, artist_key):
+    if is_stock_media(filename, artist_key, asset.get("path", "")):
         return None
         
     subject = "unknown"
@@ -92,64 +155,30 @@ def detect_content_observation(asset: Dict[str, Any]) -> Optional[ContentObserva
     capability = None
     
     fname_lower = filename.lower()
-    
-    # 1. Video Cues
-    if "event_videography" in fname_lower:
-        subject = "corporate event / launch event"
-        format_style = "cinematic coverage"
-        confidence = "MEDIUM"
-        capability = "cinematography_production"
-    elif "gym_videography" in fname_lower:
-        subject = "fitness / gym workout"
-        format_style = "high-energy promo edit"
-        confidence = "MEDIUM"
-        capability = "cinematography_production"
-    elif "music_video" in fname_lower:
-        subject = "musical performance / artist track"
-        format_style = "creative music-synced edit"
-        confidence = "MEDIUM"
-        capability = "cinematography_production"
-    elif "cafe_videography" in fname_lower:
-        subject = "café interiors / food preparation"
-        format_style = "hospitality promotional reel"
-        confidence = "MEDIUM"
-        capability = "cinematography_production"
-    elif "vlog_edit" in fname_lower:
-        subject = "lifestyle mini-vlog"
-        format_style = "personal vlog edit"
-        confidence = "MEDIUM"
-        capability = "vertical_video_editing"
-    elif "editing_work" in fname_lower:
-        subject = "general editing compilation"
-        format_style = "portfolio edit compilation"
-        confidence = "MEDIUM"
-        capability = "vertical_video_editing"
-        
-    # 2. Audio Cues
-    elif "cafe_demo" in fname_lower:
-        subject = "live acoustic vocal performance"
-        format_style = "solo / duo performance rehearsal"
-        audio_content = "acoustic guitar and vocals"
-        confidence = "MEDIUM"
-        capability = "acoustic_music"
-    elif "medley_rehearsal" in fname_lower:
-        subject = "acoustic medley rehearsal"
-        format_style = "duo / ensemble live run"
-        audio_content = "acoustic instrumentation"
-        confidence = "MEDIUM"
-        capability = "acoustic_music"
-        
-    # 3. Photo Cues
-    elif "two_worlds_one_smile" in fname_lower:
-        subject = "candid human portrait"
-        format_style = "shallow depth-of-field portrait"
-        confidence = "MEDIUM"
-        capability = "portrait_photography"
-    elif "sunflower" in fname_lower:
-        subject = "sunflower flora detail"
-        format_style = "macro nature snapshot"
-        confidence = "MEDIUM"
-        capability = "nature_photography"
+
+    # Configuration-driven filename cues (first matching rule wins).
+    for cue in load_evidence_rules().get("content_cues", []):
+        if not isinstance(cue, dict):
+            continue
+        pattern = cue.get("pattern")
+        if not pattern:
+            continue
+        try:
+            matched = re.search(pattern, fname_lower) is not None
+        except re.error:
+            continue
+        if not matched:
+            continue
+        subject = str(cue.get("subject", "unknown"))
+        format_style = str(cue.get("format_style", "unknown"))
+        audio_content = str(cue.get("audio_content", "unknown"))
+        capability = cue.get("capability")
+        # Enforce the knowledge.md ceiling: filename context is capped at MEDIUM.
+        cue_confidence = str(cue.get("confidence", "MEDIUM")).upper()
+        if _CONFIDENCE_RANK.get(cue_confidence, 1) > _CONFIDENCE_RANK[_FILENAME_CONTEXT_MAX_CONFIDENCE]:
+            cue_confidence = _FILENAME_CONTEXT_MAX_CONFIDENCE
+        confidence = cue_confidence
+        break
 
     # 4. EXIF Embedded Metadata
     exif = asset.get("metadata", {}).get("exif", {})
@@ -301,11 +330,11 @@ def compile_evidence_layer(ingestion_data: Dict[str, Any]) -> Tuple[List[Technic
                     if issue["issue_type"] in ["id_conflict", "name_mismatch", "unusual_directory_layout"]:
                         limitations.append(issue["issue_type"].upper())
                         
-            # Check for stock media limitation (e.g. M02 / M03)
+            # Check for stock media limitation
             # If the artist has stock media portfolio files, flag it
             has_stock = False
             for m in media_list:
-                if m["artist_key"] == artist_key and is_stock_media(m["filename"], artist_key):
+                if m["artist_key"] == artist_key and is_stock_media(m["filename"], artist_key, m.get("path", "")):
                     has_stock = True
                     break
             if has_stock:

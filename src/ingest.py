@@ -44,7 +44,7 @@ def run_ingestion(config: Config) -> Tuple[List[ArtistRecord], List[MediaAsset],
             folder_name = artist_dir.name
             
             # Canonical key is the normalized relative folder path
-            # e.g., 'artist_profiles/photographers/P01_Aanya_Rao'
+            # e.g., 'artist_profiles/photographers/P01_Jane_Doe'
             relative_folder_path = artist_dir.relative_to(dataset_root)
             artist_key = str(relative_folder_path).replace(os.path.sep, '/')
             
