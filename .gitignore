@@ -1,2 +1,13 @@
 __pycache__/
 *.pyc
+.pytest_cache/
+knowledge.md
+outputs/evidence.json
+outputs/ingestion.json
+outputs/ingestion_summary.json
+ARCHITECT_AUDIT.md
+STAGE3_AUDIT_REPORT.txt
+report.txt
+reports/
+sekeron_submission/
+*.zip

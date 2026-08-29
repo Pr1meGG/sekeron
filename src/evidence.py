@@ -225,21 +225,16 @@ def normalize_profile_claims(claims_data: List[Dict[str, Any]]) -> List[Tuple[st
         claim_text = claim["claim"].lower()
         artist_key = claim["artist_key"]
         
-        # Scan for matching capability terms in the claim string
+        # Scan for matching capability terms in the claim string.
+        # NOTE: a generic role/category label (e.g. "Photographer", "Video Editor")
+        # must NOT be treated as evidence for a specific capability. Only explicit
+        # claim keywords (from CAPABILITY_MAPPING) or demonstrated evidence may
+        # produce a capability signal.
         matched_caps = set()
         for term, cap in CAPABILITY_MAPPING.items():
             if term in claim_text:
                 matched_caps.add(cap)
-                
-        # If no explicit keyword matches but category claims match
-        if not matched_caps and claim["claim_type"] == "category":
-            if "photographer" in claim_text:
-                matched_caps.add("event_photography")
-            elif "music" in claim_text or "vocals" in claim_text:
-                matched_caps.add("acoustic_music")
-            elif "video" in claim_text or "editor" in claim_text:
-                matched_caps.add("vertical_video_editing")
-                
+
         for cap in matched_caps:
             mappings.append((artist_key, cap, claim["claim"]))
             

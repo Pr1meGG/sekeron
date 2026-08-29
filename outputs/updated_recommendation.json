@@ -1,0 +1,342 @@
+{
+  "recommendations": [
+    {
+      "brief_id": "01_cafe_music_whatsapp",
+      "top_recommendations": [
+        {
+          "rank": 1,
+          "artist_key": "artist_profiles/musicians/M01_Meera_Arjun",
+          "display_name": "Meera & Arjun",
+          "category": "musician",
+          "total_score": 2.75,
+          "match_reasons": [
+            "DEMONSTRATED capability 'acoustic_music' with MEDIUM confidence; directly maps to required 'acoustic_music'"
+          ],
+          "trade_offs": [
+            "Limitation 'NAME_MISMATCH' on 'acoustic_music' capability",
+            "Limitation 'SYNTHETIC_SAMPLE' on 'acoustic_music' capability",
+            "Brief excludes: Massive setups or large stage requirements"
+          ],
+          "assumptions": [
+            "Performance in a small cleared area with portable, low-setup equipment",
+            "Performance remains at a conversation-friendly volume",
+            "Event now has approximately 80 guests",
+            "Venue can now clear a small area for performance"
+          ],
+          "uncertainties": [],
+          "score_breakdown": {
+            "required_demonstrated_score": 3.25,
+            "required_claimed_score": 0.0,
+            "required_unknown_penalty": 0.0,
+            "preferred_score": 0.0,
+            "location_score": 0.2,
+            "limitation_penalties": -0.7
+          }
+        },
+        {
+          "rank": 2,
+          "artist_key": "artist_profiles/musicians/M04_KillRush",
+          "display_name": "M04_KillRush",
+          "category": "musician",
+          "total_score": 1.2,
+          "match_reasons": [
+            "PROFILE CLAIM for required 'acoustic_music' (no independent evidence)"
+          ],
+          "trade_offs": [
+            "Brief excludes: Massive setups or large stage requirements"
+          ],
+          "assumptions": [
+            "Performance in a small cleared area with portable, low-setup equipment",
+            "Performance remains at a conversation-friendly volume",
+            "Event now has approximately 80 guests",
+            "Venue can now clear a small area for performance"
+          ],
+          "uncertainties": [],
+          "score_breakdown": {
+            "required_demonstrated_score": 0.0,
+            "required_claimed_score": 1.0,
+            "required_unknown_penalty": 0.0,
+            "preferred_score": 0.0,
+            "location_score": 0.2,
+            "limitation_penalties": 0.0
+          }
+        }
+      ],
+      "improve_your_matches": [
+        {
+          "question": "What is the exact budget ceiling for this project?",
+          "missing_info": "The precise budget limit is not clearly stated",
+          "why_it_matters": "Budget determines which artists are feasible candidates",
+          "ranking_impact": "A higher budget could enable candidates with premium rates; a lower budget would disqualify them."
+        }
+      ],
+      "follow_up_applied": true,
+      "changes_detected": {
+        "changed_constraints": [
+          "Budget increased to up to 15k INR",
+          "Scope changed from background music to headline performance set"
+        ],
+        "changed_assumptions": [],
+        "changed_unknowns": [],
+        "new_information": [
+          "Event now has approximately 80 guests",
+          "Venue can now clear a small area for performance"
+        ],
+        "removed_information": [
+          "Budget: 7k / 9k",
+          "Time: 7 PM to 10 PM"
+        ]
+      },
+      "previous_ranking": [
+        {
+          "rank": 1,
+          "artist_key": "artist_profiles/musicians/M01_Meera_Arjun",
+          "total_score": 2.75
+        },
+        {
+          "rank": 2,
+          "artist_key": "artist_profiles/musicians/M04_KillRush",
+          "total_score": 1.2
+        }
+      ],
+      "updated_ranking": [
+        {
+          "rank": 1,
+          "artist_key": "artist_profiles/musicians/M01_Meera_Arjun",
+          "total_score": 2.75
+        },
+        {
+          "rank": 2,
+          "artist_key": "artist_profiles/musicians/M04_KillRush",
+          "total_score": 1.2
+        }
+      ],
+      "ranking_change_explanation": "Ranking unchanged. The updated brief replaces the original constraints with Budget increased to up to 15k INR, Scope changed from background music to headline performance set. All artists were re-scored against the updated constraints and preferred capability set. The top-two artists and their order did not change. The ranking remained stable because the artist intelligence does not contain rate, availability, or headline-set performance data. Without this information, the relative capability ordering between candidates cannot change. Important information unavailable: artist rates, availability/schedule, headline-set/performance scope capability, PA/speaker setup at venue."
+    },
+    {
+      "brief_id": "02_skincare_photography_chat",
+      "top_recommendations": [
+        {
+          "rank": 1,
+          "artist_key": "artist_profiles/photographers/P02_Kabir_Mehta",
+          "display_name": "Kabir Mehta",
+          "category": "photographer",
+          "total_score": 1.2,
+          "match_reasons": [
+            "PROFILE CLAIM for required 'product_photography' (no independent evidence)"
+          ],
+          "trade_offs": [],
+          "assumptions": [
+            "Delhi NCR area execution",
+            "Photographer handles basic in-situ tabletop setup without a full studio"
+          ],
+          "uncertainties": [],
+          "score_breakdown": {
+            "required_demonstrated_score": 0.0,
+            "required_claimed_score": 1.0,
+            "required_unknown_penalty": 0.0,
+            "preferred_score": 0.0,
+            "location_score": 0.2,
+            "limitation_penalties": 0.0
+          }
+        },
+        {
+          "rank": 2,
+          "artist_key": "artist_profiles/photographers/PO5_Frames",
+          "display_name": "Frames",
+          "category": "photographer",
+          "total_score": 0.7,
+          "match_reasons": [
+            "PROFILE CLAIM for required 'product_photography' (no independent evidence)"
+          ],
+          "trade_offs": [
+            "Limitation 'ID_CONFLICT' on 'product_photography' capability"
+          ],
+          "assumptions": [
+            "Delhi NCR area execution",
+            "Photographer handles basic in-situ tabletop setup without a full studio"
+          ],
+          "uncertainties": [],
+          "score_breakdown": {
+            "required_demonstrated_score": 0.0,
+            "required_claimed_score": 1.0,
+            "required_unknown_penalty": 0.0,
+            "preferred_score": 0.0,
+            "location_score": 0.0,
+            "limitation_penalties": -0.3
+          }
+        }
+      ],
+      "improve_your_matches": [
+        {
+          "question": "What is the exact budget ceiling for this project?",
+          "missing_info": "The precise budget limit is not clearly stated",
+          "why_it_matters": "Budget determines which artists are feasible candidates",
+          "ranking_impact": "A higher budget could enable candidates with premium rates; a lower budget would disqualify them."
+        }
+      ]
+    },
+    {
+      "brief_id": "03_vertical_video_email",
+      "top_recommendations": [
+        {
+          "rank": 1,
+          "artist_key": "artist_profiles/video_editors/VO5_Roshan",
+          "display_name": "Roshan",
+          "category": "video_editor",
+          "total_score": 3.15,
+          "match_reasons": [
+            "DEMONSTRATED capability 'vertical_video_editing' with MEDIUM confidence; directly maps to required 'vertical_video_editing'"
+          ],
+          "trade_offs": [
+            "Limitation 'ID_CONFLICT' on 'vertical_video_editing' capability"
+          ],
+          "assumptions": [
+            "Editor curates a small subset of the raw clips rather than using all",
+            "Editor may need to propose alternative music if the event song cannot be licensed"
+          ],
+          "uncertainties": [],
+          "score_breakdown": {
+            "required_demonstrated_score": 3.25,
+            "required_claimed_score": 0.0,
+            "required_unknown_penalty": 0.0,
+            "preferred_score": 0.0,
+            "location_score": 0.2,
+            "limitation_penalties": -0.3
+          }
+        },
+        {
+          "rank": 2,
+          "artist_key": "artist_profiles/video_editors/V01_Nisha_Kapoor",
+          "display_name": "Nisha Kapoor",
+          "category": "video_editor",
+          "total_score": 1.2,
+          "match_reasons": [
+            "PROFILE CLAIM for required 'vertical_video_editing' (no independent evidence)"
+          ],
+          "trade_offs": [],
+          "assumptions": [
+            "Editor curates a small subset of the raw clips rather than using all",
+            "Editor may need to propose alternative music if the event song cannot be licensed"
+          ],
+          "uncertainties": [],
+          "score_breakdown": {
+            "required_demonstrated_score": 0.0,
+            "required_claimed_score": 1.0,
+            "required_unknown_penalty": 0.0,
+            "preferred_score": 0.0,
+            "location_score": 0.2,
+            "limitation_penalties": 0.0
+          }
+        }
+      ],
+      "improve_your_matches": [
+        {
+          "question": "What is the exact budget ceiling for this project?",
+          "missing_info": "The precise budget limit is not clearly stated",
+          "why_it_matters": "Budget determines which artists are feasible candidates",
+          "ranking_impact": "A higher budget could enable candidates with premium rates; a lower budget would disqualify them."
+        }
+      ]
+    },
+    {
+      "brief_id": "04_leadership_event_photos",
+      "top_recommendations": [
+        {
+          "rank": 1,
+          "artist_key": "artist_profiles/photographers/PO5_Frames",
+          "display_name": "Frames",
+          "category": "photographer",
+          "total_score": 1.45,
+          "match_reasons": [
+            "PROFILE CLAIM for required 'event_photography' (no independent evidence)",
+            "DEMONSTRATED preferred capability 'portrait_photography'"
+          ],
+          "trade_offs": [
+            "Limitation 'ID_CONFLICT' on 'event_photography' capability",
+            "Brief excludes: Stiff traditional conference style photography"
+          ],
+          "assumptions": [
+            "Delhi NCR area execution",
+            "Candid event coverage is prioritised over formal headshots",
+            "Two pricing/scope options will be presented to procurement"
+          ],
+          "uncertainties": [],
+          "score_breakdown": {
+            "required_demonstrated_score": 0.0,
+            "required_claimed_score": 1.0,
+            "required_unknown_penalty": 0.0,
+            "preferred_score": 0.75,
+            "location_score": 0.0,
+            "limitation_penalties": -0.3
+          }
+        },
+        {
+          "rank": 2,
+          "artist_key": "artist_profiles/photographers/P01_Aanya_Rao",
+          "display_name": "Aanya Rao",
+          "category": "photographer",
+          "total_score": 1.2,
+          "match_reasons": [
+            "PROFILE CLAIM for required 'event_photography' (no independent evidence)"
+          ],
+          "trade_offs": [
+            "Brief excludes: Stiff traditional conference style photography"
+          ],
+          "assumptions": [
+            "Delhi NCR area execution",
+            "Candid event coverage is prioritised over formal headshots",
+            "Two pricing/scope options will be presented to procurement"
+          ],
+          "uncertainties": [
+            "Artist has UNKNOWN status for 'portrait_photography' which is relevant to this brief"
+          ],
+          "score_breakdown": {
+            "required_demonstrated_score": 0.0,
+            "required_claimed_score": 1.0,
+            "required_unknown_penalty": 0.0,
+            "preferred_score": 0.0,
+            "location_score": 0.2,
+            "limitation_penalties": 0.0
+          }
+        }
+      ],
+      "improve_your_matches": [
+        {
+          "question": "Is the artist's location flexible for on-site work?",
+          "missing_info": "Whether candidates can travel to the project location",
+          "why_it_matters": "Location compatibility affects feasibility",
+          "ranking_impact": "A candidate who can travel would gain the location match bonus of +0.2 points."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_artists_evaluated": 15,
+    "total_briefs_processed": 4,
+    "changed_briefs": [
+      "01_cafe_music_whatsapp"
+    ],
+    "follow_up_source": "01_cafe_music_update.txt",
+    "scoring_weights_used": {
+      "required_demonstrated": 3.0,
+      "required_claimed": 1.0,
+      "required_unknown_penalty": -0.5,
+      "preferred_demonstrated": 0.75,
+      "preferred_claimed": 0.5,
+      "location_match": 0.2,
+      "confidence_bonus": {
+        "HIGH": 0.5,
+        "MEDIUM": 0.25,
+        "LOW": 0.0
+      },
+      "limitation_penalty": {
+        "LIMITED_BY_PROVENANCE": -1.0,
+        "SYNTHETIC_SAMPLE": -0.5,
+        "ID_CONFLICT": -0.3,
+        "NAME_MISMATCH": -0.2,
+        "UNUSUAL_DIRECTORY_LAYOUT": -0.1
+      }
+    }
+  }
+}

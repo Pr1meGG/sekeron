@@ -1,12 +1,28 @@
-# Sekeron Scoring Configuration (Placeholder for Phase 2)
-weights:
-  capability_match: 0.60
-  provenance_confidence: 0.40
+# Scoring weights used by the Stage 3 recommendation engine (src/recommend.py).
+#
+# Principle: CAPABILITY RELEVANCE DOMINATES. Demonstrated > claimed > unknown.
+# Secondary bonuses (location, preferred capability) are intentionally small so
+# they can break close ties but cannot overturn a meaningful capability gap.
+#
+# Unknown does NOT equal false: UNKNOWN candidates remain eligible but receive
+# a small penalty rather than positive match points.
 
-penalties:
-  stock_media: 0.85
-  mismatched_profile_id: 0.15
-  mismatched_profile_name: 0.15
-  typo_folder_name: 0.05
-  silent_portfolio_video: 0.10
-  location_mismatch: 0.20
+weights:
+  required_demonstrated: 3.0
+  required_claimed: 1.0
+  required_unknown_penalty: -0.5
+  preferred_demonstrated: 0.75
+  preferred_claimed: 0.5
+  location_match: 0.2
+
+confidence_bonus:
+  HIGH: 0.5
+  MEDIUM: 0.25
+  LOW: 0.0
+
+limitation_penalty:
+  LIMITED_BY_PROVENANCE: -1.0
+  SYNTHETIC_SAMPLE: -0.5
+  ID_CONFLICT: -0.3
+  NAME_MISMATCH: -0.2
+  UNUSUAL_DIRECTORY_LAYOUT: -0.1
